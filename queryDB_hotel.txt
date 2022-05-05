@@ -11,7 +11,7 @@ WHERE document_type = 'CI';
 2° query:
 SELECT *
 FROM ospiti
-WHERE date_of_birth > 1988-01-01;
+where date_of_birth>1988
 
 3° query:
 select * from ospiti where name like 'D%';
