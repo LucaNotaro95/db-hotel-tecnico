@@ -1,0 +1,76 @@
+
+
+-Select-
+
+1° query:
+SELECT *
+FROM ospiti
+WHERE document_type = 'CI';
+
+
+2° query:
+SELECT *
+FROM ospiti
+WHERE date_of_birth > 1988-01-01;
+
+3° query:
+select * from ospiti where name like 'D%';
+
+4° query:
+  
+SELECT SUM(price) AS lasomma_pagamenti
+FROM pagamenti
+WHERE status = 'accepted';
+
+5° query:
+
+ SELECT MAX(price) AS massimo_Prezzo
+FROM pagamenti
+WHERE status = 'accepted';
+
+
+
+6° query:
+
+SELECT SUM(beds) AS posti_letto
+FROM stanze
+
+
+  - GROUP BY:-
+
+7° query:
+
+SELECT SUM(price) AS somma_prezzi
+FROM pagamenti
+GROUP BY status;
+
+8° query:
+
+SELECT COUNT (stanza_id) AS quante_volte_stanza_pren
+FROM prenotazioni
+GROUP BY stanza_id;
+
+
+      -JOIN-
+
+9° query:
+
+SELECT name, lastname AS cogn,prenotazione_id AS prenotazione,date_of_birth AS data
+FROM ospiti
+JOIN prenotazioni_has_ospiti ON prenotazioni_has_ospiti.ospite_id = ospiti.id
+ JOIN prenotazioni ON prenotazioni.id = prenotazioni_has_ospiti.prenotazione_id;
+
+10° query:
+
+FROM pagamenti
+JOIN prenotazioni ON prenotazioni.id = pagamenti.prenotazione_id
+JOIN stanze ON stanze.id = prenotazioni.stanza_id
+where stanze.floor = 1; 
+
+11° query:
+SELECT stanze.id, room_number AS Numero_stanza
+FROM stanze
+LEFT JOIN prenotazioni
+ON stanze.id = prenotazioni.stanza_id
+where prenotazioni.id IS NULL;
+
