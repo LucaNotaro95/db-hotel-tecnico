@@ -1,0 +1,21 @@
+CREATE TABLE [dbo].[stanze]
+(
+    [Id] INT NOT NULL PRIMARY KEY , 
+    [numero_stanze] INT NULL, 
+    [numero_letti] INT NULL, 
+    [posti] INT NULL 
+)
+
+
+
+CREATE TABLE [dbo].[prenotazioni]
+(
+	[Id] INT NOT NULL , 
+    [configurazioni_id] INT NULL, 
+    [stanze_id] INT NULL, 
+    [importo_totale] INT NULL, 
+    [data_inizio] DATETIME NULL, 
+    [data_fine_prenotazione] DATETIME NULL, 
+    PRIMARY KEY ([Id]), 
+    CONSTRAINT [FK_prenotazioni_configurazioni] FOREIGN KEY ([configurazioni_id]) REFERENCES [dbo].[configurazioni]
+)
